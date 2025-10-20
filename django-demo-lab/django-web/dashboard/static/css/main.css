@@ -1,0 +1,118 @@
+/* ===============================
+   3) Main Content
+   =============================== */
+.body .div-8{ display:contents; }
+.body .div-9{
+  position:static; margin:0; width:auto; height:auto; border:0;
+  display:flex; flex-direction:column; gap:24px;
+}
+
+/* 카드 레이아웃 */
+.cards{
+  display:grid;
+  grid-template-columns: repeat(12, minmax(0,1fr));
+  gap:24px;
+}
+
+/* 기존 카드들에 .card class만 추가(또는 아래 선택자 그대로 사용) */
+.card,
+.body .div-10, .body .div-19, .body .div-44, .body .div-51{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px;
+  display:flex; flex-direction:column; gap:16px;
+  min-height:200px;
+}
+
+/* 배치: 상단 두 카드 6칸씩, 하단 두 카드 6칸씩 */
+.body .div-10{ grid-column: span 6; }
+.body .div-19{ grid-column: span 6; }
+.body .div-44{ grid-column: span 6; }
+.body .div-51{ grid-column: span 6; }
+
+/* 카드 내부 공통 헤더 */
+.card .header,
+.body .div-11, .body .div-20, .body .div-45, .body .div-52{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  width:100%; margin:0;
+}
+.body .text-wrapper-10,
+.body .text-wrapper-17,
+.body .text-wrapper-32,
+.body .text-wrapper-47{ font:600 18px/28px Inter,system-ui; }
+
+/* 폼 블록 */
+.body .div-15{ width:100%; height:auto; gap:16px; margin:0; }
+.body .select{
+  width:100%; gap:12px; background:var(--bg);
+  border:1px solid var(--border); border-radius:8px; padding:0 12px;
+}
+.select select{
+  width:100%; height:48px; background:transparent; border:0; color:inherit;
+  font:inherit; appearance:none; outline:none; cursor:pointer;
+}
+.select select:focus-visible{ outline:2px solid var(--brand); outline-offset:-2px; }
+
+.body .textarea{
+  width:100%; height:auto; min-height:96px; background:var(--bg);
+  border:1px solid var(--border); border-radius:8px; overflow:hidden;
+}
+.textarea textarea{
+  width:100%; min-height:96px; padding:20px; background:transparent; border:0; color:inherit; font:inherit; resize:vertical; outline:none;
+}
+.textarea textarea:focus-visible{ outline:2px solid var(--brand); outline-offset:-2px; }
+
+/* 버튼 */
+.body .button-2{
+  all:unset; display:flex; align-items:center; justify-content:center; gap:8px;
+  width:100%; height:48px; background:var(--brand); color:#fff; border-radius:8px;
+}
+.body .button-2:hover{ background:#2563eb; }
+.body .button-2:active{ opacity:.9; }
+.body .button-2[disabled]{ opacity:.5; cursor:not-allowed; }
+
+/* 텍스트 버튼 */
+.body .button-3{ all:unset; display:inline-flex; align-items:center; gap:6px; }
+.body .button-3:hover{ text-decoration:underline; }
+
+/* 카드 내 그리드(메트릭 박스) */
+.body .div-24{
+  position:static; width:100%; height:auto; margin:0;
+  display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:16px;
+}
+.body .div-25, .body .div-28, .body .div-31, .body .div-34{
+  position:static; width:100%; height:auto; padding:16px;
+  background:var(--bg); border:1px solid var(--border); border-radius:8px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+
+/* 차트 박스는 비율로 */
+.body .svg-4, .body .frame-9{
+  width:100%; height:auto; aspect-ratio: 16 / 9;
+  background-size:cover; background-position:center; border-radius:8px;
+}
+.body .frame-9{ background-image:url(./img/vector-24.svg); }
+
+/* 상태 점 */
+.dot{ width:8px; height:8px; border-radius:9999px; }
+.dot--ok{ background:var(--success); }
+.dot--bad{ background:var(--danger); }
+
+/* 레이아웃 고정: div-9가 cards인 경우 그리드로 강제 */
+.body .div-9.cards{
+  display: grid;                                /* flex → grid */
+  grid-template-columns: repeat(12, minmax(0,1fr));
+  gap: 24px;
+}
+
+/* 카드 폭/배치 */
+.body .div-9.cards > .card{
+  grid-column: span 6 / span 6;                 /* 2열(6칸+6칸) */
+  width: auto; max-width: 100%; position: static;
+  height: auto;
+}
+/* 반응형: 1200px 이하 1열 */
+@media (max-width:1200px){
+  .body .div-9.cards > .card{ grid-column: span 12 / span 12; }
+}

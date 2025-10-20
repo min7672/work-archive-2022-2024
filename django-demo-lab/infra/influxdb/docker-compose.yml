@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  influxdb:
+    image: influxdb:1.8
+    container_name: influxdb
+    ports:
+      - "8086:8086"   # HTTP API
+      - "8088:8088"   # RPC (backup/restore)
+    volumes:
+      - ./influxdb.conf:/etc/influxdb/influxdb.conf:ro
+      - ./meta:/var/lib/influxdb/meta
+      - ./data:/var/lib/influxdb/data
+      - ./wal:/var/lib/influxdb/wal
+    command: influxd -config /etc/influxdb/influxdb.conf
+    restart: unless-stopped

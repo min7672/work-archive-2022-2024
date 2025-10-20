@@ -1,0 +1,140 @@
+/* ===============================
+   0) 디자인 토큰
+   =============================== */
+:root{
+  --bg:#0f1117;
+  --panel:#1a1d29;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --brand:#3b82f6;
+  --brand-weak: rgba(59,130,246,.1);
+  --border:#3b5ba1;
+  --success:#10b981;
+  --danger:#ef4444;
+  --radius:12px;
+  --gap:16px;
+}
+
+/* ===============================
+   1) App Shell
+   =============================== */
+.body{
+  min-height:100vh;
+  background:var(--bg);
+  color:var(--text);
+  display:grid;
+  grid-template-columns: 256px 1fr;
+  gap:24px;
+  /* 중앙 정렬이 필요하면 아래 두 줄 사용 */
+  /* max-width:1280px; margin:0 auto; */
+  padding:24px;
+  box-sizing:border-box;
+}
+.body .div{ /* 최상위 wrapper 대체 */
+  display:contents; /* 기존 구조 보존용 */
+}
+
+/* ===============================
+   2) Sidebar
+   =============================== */
+.body .div-2 {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* ✅ 상단-하단 자동 분리 */
+  gap: 24px;
+  height: auto;
+  min-height: calc(100vh - 48px);
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.body .div-3{ margin:0; width:auto; height:auto; }
+.body .text-wrapper{ font:600 20px/1.4 Inter,system-ui; color:#fff; }
+.body .text-wrapper-2{ color:var(--muted); }
+.body .nav{
+  margin:0; width:auto; height:auto;
+  display:flex; flex-direction:column; gap:12px;
+}
+.body .button,
+.body .div-wrapper{
+  all:unset; display:flex; align-items:center;
+  gap:12px; padding:14px 16px;
+  border:1px solid var(--border);
+  border-radius:12px;
+}
+.body .button{ background:var(--brand-weak); }
+.nav .div-4 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px; /* ← 아이콘-텍스트 간격 */
+  padding: 3px 8px;
+}
+
+/* 상태 */
+.body .button[aria-pressed="true"]{ background:var(--brand-weak); border-color:var(--border); }
+.body .div-wrapper[aria-pressed="false"]:hover{ background:rgba(59,130,246,.05); }
+
+/* 계정 영역 */
+.div-5 { margin-top: auto;  padding-top: 16px; border-top: 1px solid var(--border); }
+.body .div-6{ margin:0; gap:12px; align-items:center; }
+
+
+/* 프로필 영역 */
+.profile-card { display: flex; align-items: center; gap: 10px; }
+.avatar { width: 60px; height: 60px; border-radius: 50%; border: 1px solid var(--border); }
+.info .name { font-size: 0.9rem; font-weight: 600; color: var(--text-primary, #e5e7eb); }
+.info .role { font-size: 0.8rem; color: var(--text-secondary, #9ca3af); }
+
+.nav a .vector { width: 18px; height: 18px; opacity: 0.85;
+  filter: brightness(0) invert(0.8) sepia(0.2) saturate(2.5) hue-rotate(190deg);
+  transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+}
+
+.nav a:hover .vector {
+  transform: scale(1.1); opacity: 1;
+  filter: brightness(0) invert(0.95) sepia(0.3) saturate(4) hue-rotate(200deg);
+}
+
+
+.nav a .text-wrapper-3,
+.nav a .text-wrapper-4,
+.nav a .text-wrapper-5 {
+  color: #cbd5e1;
+  transition: color 0.2s ease;
+}
+
+.nav a:hover .text-wrapper-3,
+.nav a:hover .text-wrapper-4,
+.nav a:hover .text-wrapper-5 {
+  color: #60a5fa;
+}
+
+/* ===============================
+   4) 타이포 & 유틸
+   =============================== */
+/* .muted{ color:var(--muted); }
+.small{ font: 400 12px/16px Inter,system-ui; } */
+
+/* ===============================
+   5) 반응형
+   =============================== */
+@media (max-width: 1200px){
+  .body{ grid-template-columns: 220px 1fr; gap:20px; padding:20px; }
+  .body .div-10,
+  .body .div-19,
+  .body .div-44,
+  .body .div-51{ grid-column: span 12; }
+}
+@media (max-width: 960px){
+  .body{ grid-template-columns: 1fr; }
+  .body .div-2{ position:static; min-height:auto; }
+}
+@media (prefers-reduced-motion: no-preference){
+  .card, .button-2{ transition: background-color .2s ease, opacity .2s ease, border-color .2s ease; }
+}

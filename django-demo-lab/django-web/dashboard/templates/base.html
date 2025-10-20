@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>DataFlow Monitoring Platform</title>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+    <div class="body">
+        <div class="div">
+            <!-- Sidebar -->
+            <aside class="div-2" aria-label="Main navigation">
+                <header class="div-3">
+                    <h1 class="text-wrapper">Django-Demo-Lab</h1>
+                    <p class="text-wrapper-2">Front-publishinh</p>
+                </header>
+
+                <nav class="nav" aria-label="Primary">
+                    <a href="{% url 'home' %}" class="div-wrapper" aria-current="page">
+                        <div class="div-4">
+                            <span class="svg-wrapper" aria-hidden="true">
+                                <span class="frame-wrapper">
+                                    <span class="vector-wrapper">
+                                        <img class="vector" src="{% static 'img/vector_pen.svg' %}" alt="" />
+                                    </span>
+                                </span>
+                            </span>
+                            <span class="text-wrapper-3">SVG</span>
+
+                        </div>
+                    </a>
+
+                    <a href="{% url 'chart' %}" class="div-wrapper" aria-current="page">
+                        <div class="div-4">
+                            <span class="svg-wrapper" aria-hidden="true">
+                                <span class="frame-wrapper">
+                                    <span class="vector-wrapper">
+                                        <img class="vector" src="{% static 'img/bar-chart.svg' %}" alt="" />
+                                    </span>
+                                </span>
+                            </span>
+                            <span class="text-wrapper-4">Chart</span>
+                        </div>
+                    </a>
+
+                    <a href="{% url 'canvas' %}" class="div-wrapper" aria-current="page">
+                        <div class="div-4">
+                            <span class="svg-wrapper" aria-hidden="true">
+                                <span class="frame-wrapper">
+                                    <span class="vector-wrapper">
+                                        <img class="vector" src="{% static 'img/cube.svg' %}" alt="" />
+                                    </span>
+                                </span>
+                            </span>
+                            <span class="text-wrapper-5">3D Canvas</span>
+                        </div>
+                    </a>
+
+                    <!-- <button class="div-wrapper" type="button" aria-pressed="false">
+                        <div class="div-4">
+                            <span class="i" aria-hidden="true">
+                                <span class="svg">
+                                    <span class="img-wrapper">
+                                        <img class="img" src="{% static 'img/vector-18.svg' %}" alt="" />
+                                    </span>
+                                </span>
+                            </span>
+                            <span class="text-wrapper-6">Logger</span>
+                        </div>
+                    </button>
+
+                    <button class="div-wrapper" type="button" aria-pressed="false">
+                        <div class="div-4">
+                            <span class="svg-wrapper" aria-hidden="true">
+                                <span class="frame-wrapper">
+                                    <span class="vector-wrapper">
+                                        <img class="vector-2" src="{% static 'img/vector-34.svg' %}" alt="" />
+                                    </span>
+                                </span>
+                            </span>
+                            <span class="text-wrapper-7">Settings</span>
+                        </div>
+                    </button> -->
+                </nav>
+
+                <div class="div-5">
+                    <div class="profile-card">
+                        <img src="{% static 'img/profile.jpg' %}" alt="Profile photo" class="avatar" />
+                        <div class="info">
+                            <p class="name">Guest User</p>
+                            <p class="role">Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            {% block content %}
+            {% endblock %}
+
+        </div>
+    </div>
+</body>
+
+</html>
