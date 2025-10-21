@@ -112,6 +112,25 @@
   width: auto; max-width: 100%; position: static;
   height: auto;
 }
+
+
+/*VIEW-SECTIOn*/
+.view-image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0; /* 위아래 여백 */
+}
+
+.view-image {
+    max-width: 90%;
+    height: auto;
+    border-radius: 8px;
+    opacity: 0.95;
+}
+
+
+
 /* 반응형: 1200px 이하 1열 */
 @media (max-width:1200px){
   .body .div-9.cards > .card{ grid-column: span 12 / span 12; }

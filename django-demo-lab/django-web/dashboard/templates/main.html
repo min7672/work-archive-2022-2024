@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
 <head>
     <link rel="stylesheet" href="{% static 'css/main.css' %}" />
 </head>
@@ -10,237 +11,49 @@
     <!-- 카드 래퍼: 그리드 배치 -->
     <div class="div-9 cards">
 
-        <!-- Publisher -->
+        <!-- VIEW -->
         <section class="div-10 card" aria-labelledby="publisher-heading">
             <header class="div-11">
                 <div class="div-12">
-                    <h2 id="publisher-heading" class="text-wrapper-10">Data Publisher</h2>
+                    <h2 id="publisher-heading" class="text-wrapper-10">VIEW</h2>
                     <div class="div-13" role="status" aria-label="Connection status">
                         <span class="div-14" aria-hidden="true"></span>
-                        <span class="text-wrapper-11">Connected</span>
                     </div>
                 </div>
-                <span class="i-3" aria-hidden="true">
-                    <span class="svg"><span class="frame-3"></span></span>
-                </span>
             </header>
 
-            <div class="div-15">
-                <div class="div-16">
-                    <div class="div-wrapper-2">
-                        <label for="topic-select" class="text-wrapper-12">Topic</label>
-                    </div>
-                    <div class="select">
-                        <select id="topic-select" class="text-wrapper-13" aria-label="Select topic">
-                            <option value="sensors/temperature">sensors/temperature</option>
-                        </select>
-                        <span class="frame-4" aria-hidden="true">
-                            <img class="vector-3" src="{% static 'img/vector-13.svg' %}" alt="" />
-                        </span>
-                    </div>
-                </div>
+            <div class="view-image-wrapper">
 
-                <div class="div-17">
-                    <div class="div-wrapper-2">
-                        <label for="message-textarea" class="text-wrapper-14">Message</label>
-                    </div>
-                    <div class="textarea">
-                        <textarea id="message-textarea" class="temperature" rows="4" aria-label="Message content">
-{"temperature": 23.5, "unit": "celsius", "timestamp": "2024-01-15T10:30:00Z"}
-</textarea>
-                    </div>
-                </div>
 
-                <button class="button-2" type="button" aria-label="Publish message">
-                    <span class="i-4" aria-hidden="true">
-                        <span class="frame-wrapper"><span class="frame-5"></span></span>
-                    </span>
-                    <span class="span"><span class="text-wrapper-15">Publish Message</span></span>
-                </button>
+                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <!-- 커스텀 SVG 요소 -->
+                <defs>
+                <linearGradient id="soc-f1-1-grad" x1="7%" y1="0%" x2="0%" y2="100%" gradientUnits="objectBoundingBox">
+                <stop offset="0.05" stop-color="#45BCF2"/>
+                <stop offset="1" stop-color="#45BCF2"/>
+                </linearGradient>
+                <linearGradient id="soc-f1-1-grad" x1="7%" y1="0%" x2="0%" y2="100%" gradientUnits="objectBoundingBox">
+                <stop offset="0.05" stop-color="#45BCF2"/>
+                <stop offset="1" stop-color="#45BCF2"/>
+                </linearGradient>
+                </defs>
 
-                <div class="div-18" role="status" aria-live="polite">
-                    <p class="p">Last published: 2 seconds ago</p>
-                    <p class="text-wrapper-16">Messages sent: 1,247</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Dashboard -->
-        <section class="div-19 card" aria-labelledby="dashboard-heading">
-            <header class="div-20">
-                <div class="div-21">
-                    <h2 id="dashboard-heading" class="text-wrapper-17">System Dashboard</h2>
-                    <div class="div-22" role="status" aria-label="System status">
-                        <span class="div-23" aria-hidden="true"></span>
-                        <span class="text-wrapper-18">Online</span>
-                    </div>
-                </div>
-                <span class="i-5" aria-hidden="true">
-                    <span class="frame-wrapper">
-                        <span class="vector-wrapper">
-                            <img class="vector" src="{% static 'img/vector-30.svg' %}" alt="" />
-                        </span>
-                    </span>
-                </span>
-            </header>
-
-            <div class="div-24">
-                <article class="div-25" aria-labelledby="cpu-usage-label">
-                    <div class="div-26">
-                        <div class="div-27">
-                            <h3 id="cpu-usage-label" class="text-wrapper-19">CPU Usage</h3>
-                            <p class="text-wrapper-20" aria-label="CPU usage percentage">24%</p>
-                        </div>
-                        <span class="i-6" aria-hidden="true">
-                            <span class="frame-wrapper"><span class="frame-6"></span></span>
-                        </span>
-                    </div>
-                </article>
-
-                <article class="div-28" aria-labelledby="memory-label">
-                    <div class="div-29">
-                        <div class="div-30">
-                            <h3 id="memory-label" class="text-wrapper-21">Memory</h3>
-                            <p class="text-wrapper-22" aria-label="Memory usage">1.2GB</p>
-                        </div>
-                        <span class="i-7" aria-hidden="true">
-                            <span class="svg">
-                                <span class="img-wrapper">
-                                    <img class="vector-4" src="{% static 'img/vector-12.svg' %}" alt="" />
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                </article>
-
-                <article class="div-31" aria-labelledby="mqtt-clients-label">
-                    <div class="div-32">
-                        <div class="div-33">
-                            <h3 id="mqtt-clients-label" class="text-wrapper-23">MQTT Clients</h3>
-                            <p class="text-wrapper-24" aria-label="Number of MQTT clients">8</p>
-                        </div>
-                        <span class="i-8" aria-hidden="true">
-                            <span class="svg-3"><span class="frame-7"></span></span>
-                        </span>
-                    </div>
-                </article>
-
-                <article class="div-34" aria-labelledby="uptime-label">
-                    <div class="div-35">
-                        <div class="div-36">
-                            <h3 id="uptime-label" class="text-wrapper-25">Uptime</h3>
-                            <p class="text-wrapper-26" aria-label="System uptime">2d 4h</p>
-                        </div>
-                        <span class="i-6" aria-hidden="true">
-                            <span class="frame-wrapper"><span class="frame-8"></span></span>
-                        </span>
-                    </div>
-                </article>
+                <g>
+                <title>Layer 1</title>
+                <image stroke="null" href="{% static 'img/energy_system_isometric.png' %}" id="svg_1" height="853" width="1280" y="2.82279" x="-0.08866"/>
+                </g>
+                <g>
+                <title>Layer 2</title>
+                <g transform="translate(300 150) scale(0.19 0.19)" opacity="0.9" id="svg_2" stroke="null">
+                <path d="m-539.27182,14.0483l332.6299,131.33714l0,998.81423l-332.6299,-159.00066l0,-971.15072l0,0.00001z" fill="url(#soc-f1-1-grad)" id="svg_3" stroke="null"/>
+                </g>
+                <g transform="translate(300 150) scale(0.19 0.19)" opacity="0.9" id="svg_6" stroke="null">
+                <path d="m93.45983,291.78902l332.6299,131.33714l0,998.81423l-332.6299,-159.00066l0,-971.15072l0,0.00001z" fill="url(#soc-f1-1-grad)" id="svg_5" stroke="null"/>
+                </g>
+                </g>
+                </svg>
             </div>
 
-            <div class="div-37">
-                <h3 class="text-wrapper-27">Active Connections</h3>
-                <ul class="div-16">
-                    <li class="div-38">
-                        <span class="text-wrapper-28">Device-001</span>
-                        <span class="div-39" role="status" aria-label="Device-001">
-                            <span class="div-23" aria-hidden="true"></span>
-                            <span class="text-wrapper-29">Connected</span>
-                        </span>
-                    </li>
-                    <li class="div-40">
-                        <span class="text-wrapper-30">Device-002</span>
-                        <span class="div-39" role="status" aria-label="Device-002">
-                            <span class="div-23" aria-hidden="true"></span>
-                            <span class="text-wrapper-29">Connected</span>
-                        </span>
-                    </li>
-                    <li class="div-41">
-                        <span class="text-wrapper-30">Device-003</span>
-                        <span class="div-42" role="status" aria-label="Device-003">
-                            <span class="div-43" aria-hidden="true"></span>
-                            <span class="text-wrapper-31">Disconnected</span>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Chart -->
-        <section class="div-44 card" aria-labelledby="chart-heading">
-            <header class="div-45">
-                <div class="div-46">
-                    <h2 id="chart-heading" class="text-wrapper-32">Data Chart</h2>
-                    <div class="div-47" role="status" aria-label="Chart status">
-                        <span class="div-48" aria-hidden="true"></span>
-                        <span class="text-wrapper-33">Live</span>
-                    </div>
-                </div>
-                <span class="i-5" aria-hidden="true">
-                    <span class="frame-wrapper">
-                        <span class="vector-wrapper">
-                            <img class="vector" src="{% static 'img/vector-17.svg' %}" alt="" />
-                        </span>
-                    </span>
-                </span>
-            </header>
-
-            <div class="div-49">
-                <div class="div-wrapper-2">
-                    <svg class="svg-4" role="img" aria-label="Temperature sensor data chart" viewBox="0 0 506 256">
-                        <title>Temperature Chart</title>
-                        <g class="frame-9">
-                            <image class="vector-5" href="{% static 'img/vector-21.svg' %}" />
-                            <g class="group">
-                                <image class="vector-6" href="{% static 'img/vector-29.svg' %}" />
-                                <image class="vector-7" href="{% static 'img/vector-20.svg' %}" />
-                                <image class="vector-8" href="{% static 'img/vector-6.svg' %}" />
-                                <image class="vector-9" href="{% static 'img/vector-25.svg' %}" />
-                            </g>
-                            <g class="group-2">
-                                <image class="vector-10" href="{% static 'img/vector-8.svg' %}" />
-                                <image class="vector-11" href="{% static 'img/vector-7.svg' %}" />
-                                <image class="vector-12" href="{% static 'img/vector-9.svg' %}" />
-                                <image class="vector-13" href="{% static 'img/vector-10.svg' %}" />
-                                <image class="vector-14" href="{% static 'img/vector-2.svg' %}" />
-                                <image class="vector-15" href="{% static 'img/vector-3.svg' %}" />
-                            </g>
-                            <image class="vector-5" href="{% static 'img/vector-28.svg' %}" />
-                            <g class="group-3">
-                                <image class="vector-16" href="{% static 'img/vector-33.svg' %}" />
-                                <image class="vector-17" href="{% static 'img/vector-4.svg' %}" />
-                                <image class="vector-18" href="{% static 'img/vector-19.svg' %}" />
-                                <image class="vector-19" href="{% static 'img/vector-32.svg' %}" />
-                                <image class="vector-15" href="{% static 'img/vector-22.svg' %}" />
-                            </g>
-                            <g class="group-4">
-                                <text class="text-wrapper-34">Temperature (°C)</text>
-                                <image class="vector-20" href="{% static 'img/vector-31.svg' %}" />
-                            </g>
-                            <image class="group-5" href="{% static 'img/group.png' %}" />
-                            <g class="group-6">
-                                <text class="text-wrapper-35">03:12:35 AM</text>
-                                <text class="text-wrapper-36">03:12:40 AM</text>
-                                <text class="text-wrapper-37">03:12:45 AM</text>
-                                <text class="text-wrapper-38">03:12:50 AM</text>
-                            </g>
-                            <g class="group-7">
-                                <text class="text-wrapper-39">20</text>
-                                <text class="text-wrapper-40">22</text>
-                                <text class="text-wrapper-41">24</text>
-                                <text class="text-wrapper-42">26</text>
-                                <text class="text-wrapper-43">28</text>
-                                <text class="text-wrapper-44">30</text>
-                            </g>
-                        </g>
-                    </svg>
-                </div>
-            </div>
-
-            <footer class="div-50">
-                <p class="text-wrapper-45">Temperature Sensor Data</p>
-                <p class="text-wrapper-46" role="status" aria-live="polite">Last update: 1s ago</p>
-            </footer>
         </section>
 
         <!-- System Log -->
