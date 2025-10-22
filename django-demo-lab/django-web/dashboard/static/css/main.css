@@ -1,137 +1,39 @@
-/* ===============================
-   3) Main Content
-   =============================== */
-.body .div-8{ display:contents; }
-.body .div-9{
-  position:static; margin:0; width:auto; height:auto; border:0;
-  display:flex; flex-direction:column; gap:24px;
-}
+/* =============================== 3) Main Content =============================== */
+.body .div-8{display:contents;}
+.body .div-9{position:static;margin:0;width:auto;height:auto;border:0;display:flex;flex-direction:column;gap:24px;}
+.cards{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;}
+.card,.body .div-10,.body .div-19,.body .div-44,.body .div-51{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:16px;min-height:200px;}
 
-/* 카드 레이아웃 */
-.cards{
-  display:grid;
-  grid-template-columns: repeat(12, minmax(0,1fr));
-  gap:24px;
-}
+.card .header,.body .div-11,.body .div-20,.body .div-45,.body .div-52{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;margin:0;}
+.body .div-9.cards{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;}
+.body .div-9.cards>.card{grid-column:span 6/span 6;width:auto;max-width:100%;position:static;height:auto;}
 
-/* 기존 카드들에 .card class만 추가(또는 아래 선택자 그대로 사용) */
-.card,
-.body .div-10, .body .div-19, .body .div-44, .body .div-51{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:24px;
-  display:flex; flex-direction:column; gap:16px;
-  min-height:200px;
-}
+.view-image-wrapper{display:flex;justify-content:center;align-items:center;padding:40px 0;}
+.view-image{max-width:90%;height:auto;border-radius:8px;opacity:.95;}
 
-/* 배치: 상단 두 카드 6칸씩, 하단 두 카드 6칸씩 */
-.body .div-10{ grid-column: span 6; }
-.body .div-19{ grid-column: span 6; }
-.body .div-44{ grid-column: span 6; }
-.body .div-51{ grid-column: span 6; }
+/* ── Controller scope───────── */
+.controller .legend-list{margin:0;padding:8px 0;}
+.controller .legend-row{display:grid!important;grid-template-columns:auto 1fr auto 220px;align-items:center;gap:12px;padding:6px 8px;border-bottom:1px solid #1f2937;}
+.controller .legend-row:last-child{border-bottom:0;}
+.controller .dot{width:10px;height:10px;border-radius:50%;background:#4F76C7;}
+.controller .legend-text{color:#E6EAF2;font-size:14px;}
+.controller .legend-suffix{border:1px solid #3a3a3a;background:#151922;color:#e6eaf2;padding:4px 10px;border-radius:6px;font-size:13px;line-height:1;}
+.controller .status-row{grid-template-columns:auto 1fr auto;}
+.controller .legend-suffix.charging:hover{background:#3eff7a1f;color:#5FF272;border-color:#5FF272;}
+.controller .legend-suffix.discharging:hover{background:#ff4d4d1f;color:#ff5e6c;border-color:#ff5e6c;}
+.controller .soc-slider{--accent:#45BCF2;--val:50%;appearance:none;-webkit-appearance:none;width:220px;height:6px;border-radius:999px;background:linear-gradient(to right,var(--accent) var(--val),#2A3140 var(--val));outline:none;cursor:pointer;}
+.controller .soc-slider::-webkit-slider-runnable-track{height:6px;background:transparent;}
+.controller .soc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--accent);border:2px solid #ffffff33;box-shadow:0 0 4px #0006;margin-top:-4px;}
+.controller .soc-slider::-moz-range-track{height:6px;background:#2A3140;border-radius:999px;}
+.controller .soc-slider::-moz-range-progress{height:6px;background:var(--accent);border-radius:999px;}
+.controller .soc-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--accent);border:2px solid #ffffff33;}
 
-/* 카드 내부 공통 헤더 */
-.card .header,
-.body .div-11, .body .div-20, .body .div-45, .body .div-52{
-  display:flex; align-items:center; justify-content:space-between; gap:12px;
-  width:100%; margin:0;
-}
-.body .text-wrapper-10,
-.body .text-wrapper-17,
-.body .text-wrapper-32,
-.body .text-wrapper-47{ font:600 18px/28px Inter,system-ui; }
+/* ── animation scope───────── */
+.line-animation1{width:100px;height:100px;fill:none;stroke:#5FF272;stroke-width:4.5px;stroke-dasharray:200;stroke-dashoffset:400;animation:ani1 2s infinite linear;animation-direction:reverse;}
+.line-animation2{fill:none;stroke:#5FF272;stroke-width:4.5px;stroke-dasharray:200;stroke-dashoffset:400;animation:ani1 2s infinite linear;animation-direction:reverse;}
 
-/* 폼 블록 */
-.body .div-15{ width:100%; height:auto; gap:16px; margin:0; }
-.body .select{
-  width:100%; gap:12px; background:var(--bg);
-  border:1px solid var(--border); border-radius:8px; padding:0 12px;
-}
-.select select{
-  width:100%; height:48px; background:transparent; border:0; color:inherit;
-  font:inherit; appearance:none; outline:none; cursor:pointer;
-}
-.select select:focus-visible{ outline:2px solid var(--brand); outline-offset:-2px; }
-
-.body .textarea{
-  width:100%; height:auto; min-height:96px; background:var(--bg);
-  border:1px solid var(--border); border-radius:8px; overflow:hidden;
-}
-.textarea textarea{
-  width:100%; min-height:96px; padding:20px; background:transparent; border:0; color:inherit; font:inherit; resize:vertical; outline:none;
-}
-.textarea textarea:focus-visible{ outline:2px solid var(--brand); outline-offset:-2px; }
-
-/* 버튼 */
-.body .button-2{
-  all:unset; display:flex; align-items:center; justify-content:center; gap:8px;
-  width:100%; height:48px; background:var(--brand); color:#fff; border-radius:8px;
-}
-.body .button-2:hover{ background:#2563eb; }
-.body .button-2:active{ opacity:.9; }
-.body .button-2[disabled]{ opacity:.5; cursor:not-allowed; }
-
-/* 텍스트 버튼 */
-.body .button-3{ all:unset; display:inline-flex; align-items:center; gap:6px; }
-.body .button-3:hover{ text-decoration:underline; }
-
-/* 카드 내 그리드(메트릭 박스) */
-.body .div-24{
-  position:static; width:100%; height:auto; margin:0;
-  display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:16px;
-}
-.body .div-25, .body .div-28, .body .div-31, .body .div-34{
-  position:static; width:100%; height:auto; padding:16px;
-  background:var(--bg); border:1px solid var(--border); border-radius:8px;
-  display:flex; align-items:center; justify-content:space-between;
-}
-
-/* 차트 박스는 비율로 */
-.body .svg-4, .body .frame-9{
-  width:100%; height:auto; aspect-ratio: 16 / 9;
-  background-size:cover; background-position:center; border-radius:8px;
-}
-.body .frame-9{ background-image:url(./img/vector-24.svg); }
-
-/* 상태 점 */
-.dot{ width:8px; height:8px; border-radius:9999px; }
-.dot--ok{ background:var(--success); }
-.dot--bad{ background:var(--danger); }
-
-/* 레이아웃 고정: div-9가 cards인 경우 그리드로 강제 */
-.body .div-9.cards{
-  display: grid;                                /* flex → grid */
-  grid-template-columns: repeat(12, minmax(0,1fr));
-  gap: 24px;
-}
-
-/* 카드 폭/배치 */
-.body .div-9.cards > .card{
-  grid-column: span 6 / span 6;                 /* 2열(6칸+6칸) */
-  width: auto; max-width: 100%; position: static;
-  height: auto;
-}
-
-
-/*VIEW-SECTIOn*/
-.view-image-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 0; /* 위아래 여백 */
-}
-
-.view-image {
-    max-width: 90%;
-    height: auto;
-    border-radius: 8px;
-    opacity: 0.95;
-}
-
-
+@keyframes ani1{0%{stroke-dashoffset:400}25%{stroke-dashoffset:300}50%{stroke-dashoffset:200}75%{stroke-dashoffset:100}100%{stroke-dashoffset:0}}
+@keyframes ani2{0%{stroke-dashoffset:400}25%{stroke-dashoffset:300}50%{stroke-dashoffset:200}75%{stroke-dashoffset:100}100%{stroke-dashoffset:0}}
 
 /* 반응형: 1200px 이하 1열 */
-@media (max-width:1200px){
-  .body .div-9.cards > .card{ grid-column: span 12 / span 12; }
-}
+@media (max-width:1200px){.body .div-9.cards>.card{grid-column:span 12/span 12;}}
