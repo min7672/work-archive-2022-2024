@@ -2,12 +2,127 @@
 {% load static %}
 
 {% block content %}
+
 <head>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/canvas.css' %}" />
+    <!-- Babylon.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+    <script src="https://assets.babylonjs.com/generated/Assets.js"></script>
+    <script src="https://cdn.babylonjs.com/recast.js"></script>
+    <script src="https://cdn.babylonjs.com/ammo.js"></script>
+    <script src="https://cdn.babylonjs.com/havok/HavokPhysics_umd.js"></script>
+    <script src="https://cdn.babylonjs.com/cannon.js"></script>
+    <script src="https://cdn.babylonjs.com/Oimo.js"></script>
+    <script src="https://cdn.babylonjs.com/earcut.min.js"></script>
+
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+    <script src="https://cdn.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+    <script src="https://cdn.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+    <script src="https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+    <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
+    <script src="https://cdn.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+
 </head>
-<!-- Main -->
+
 <main class="div-8">
-    <h2> 3D-canvas</h2>
+    <!-- 카드 래퍼: 그리드 배치 -->
+    <div class="div-9 cards">
+
+        <!-- VIEW -->
+        <section class="div-10 card" aria-labelledby="publisher-heading">
+            <header class="div-11">
+                <div class="div-12">
+                    <h2 id="publisher-heading" class="text-wrapper-10">3D-VIEW</h2>
+                    <div class="div-13" role="status" aria-label="Connection status">
+                        <span class="div-14" aria-hidden="true"></span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="canvas-container">
+                <canvas id="renderCanvas" class="main-content-3-main-1-3d"></canvas>
+            </div>
+
+        </section>
+
+        <!-- Controller -->
+        <section class="card controller panel" aria-labelledby="ctrl-heading">
+            <header class="panel__header">
+                <h3 id="ctrl-heading">Controller</h3>
+            </header>
+
+            <ul class="panel__list">
+                <!-- 온도/머티리얼 -->
+                <li class="panel__item">
+                    <span class="dot"></span>
+                    <div class="item__title">CellPack Temperature</div>
+                    <div class="item__ctrl">
+                        <label class="chip">ID
+                            <input id="temp-cellpack" type="number" min="2" max="14" value="2" class="input input--num">
+                        </label>
+                        <label class="chip">°C
+                            <input id="temp-value" type="number" step="1" value="25" class="input input--num">
+                        </label>
+                        <button id="btn-apply-temp" class="btn btn--pill">Apply</button>
+                    </div>
+                </li>
+                <p class="desc">
+                    선택한 CellPack의 온도를 입력하고 <b>Apply</b> 버튼을 누르면, 지정 온도 구간에 따라 머티리얼 색상이 자동으로 변경됩니다.<br>
+                    예) 40℃ 하양 / 40~60℃ 노랑 / 60~℃ 주황
+                </p>
+
+                <!-- 카메라 프리셋 -->
+                <li class="panel__item">
+                    <span class="dot"></span>
+                    <div class="item__title">Camera Preset</div>
+                    <div class="item__ctrl item__ctrl--row">
+                        <button id="cam-1" class="btn btn--ghost">View 1</button>
+                        <button id="cam-2" class="btn btn--ghost">View 2</button>
+                        <button id="cam-3" class="btn btn--ghost">View 3</button>
+                    </div>
+                </li>
+                <p class="desc">
+                    <b>View 1~3</b> 버튼을 클릭하면 미리 설정된 시점으로 카메라가 전환됩니다.<br>
+                    각 뷰는 고정된 각도와 거리로 설정되어 있으며, 장치의 전체 구조나 특정 CellPack 영역을 빠르게 확인할 수 있습니다.
+                </p>
+
+                <!-- 위치 이동 -->
+                <li class="panel__item">
+                    <span class="dot"></span>
+                    <div class="item__title">CellPack Translate</div>
+                    <div class="item__ctrl">
+                        <label class="chip">ID
+                            <input id="move-cellpack" type="number" min="1" max="7" value="1" class="input input--num">
+                        </label>
+                        <label class="chip">Axis
+                            <select id="move-axis" class="input input--sel">
+                                <option value="x">X</option>
+                                <option value="y">Y</option>
+                                <option value="z" selected>Z</option>
+                            </select>
+                        </label>
+                        <label class="chip">Offset
+                            <input id="move-offset" type="number" step="0.01" value="15" class="input input--num">
+                        </label>
+                        <button id="btn-apply-offset" class="btn btn--pill">Apply</button>
+                    </div>
+                </li>
+                <p class="desc">
+                    이동할 <b>CellPack 번호</b>와 이동 <b>축(X/Y/Z)</b>, <b>이격 거리</b>를 입력한 후 <b>Apply</b> 버튼을 누르면 지정 방향으로 모델이
+                    이동합니다.<br>
+                    이 기능은 모델의 정렬 상태를 점검하거나 특정 모듈만 분리 시각화할 때 사용합니다.
+                    (ID= 1, Axis=Z, Offset=17, view 3 권장)
+                </p>
+
+            </ul>
+        </section>
+
+
+    </div>
 </main>
+<script src="{% static '/js/canvas.js'%}"></script>
+
 
 {% endblock %}
