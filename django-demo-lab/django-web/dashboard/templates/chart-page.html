@@ -3,11 +3,106 @@
 
 {% block content %}
 <head>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/chart.css' %}" />
 </head>
-<!-- Main -->
+
 <main class="div-8">
-    <h2> CHART-PAGE</h2>
+  <div class="div-9 cards">
+    <!-- ========== Left: Bar Chart ========== -->
+    <section class="div-10 card" aria-labelledby="bar-heading">
+      <header class="div-11">
+        <div class="div-12">
+          <h2 id="bar-heading" class="text-wrapper-10">Bar Chart</h2>
+        </div>
+      </header>
+
+      <canvas id="bar-canvas" style="width:100%;height:60vh;background:#f5f7fb;border-radius:12px;"></canvas>
+
+      <div class="controls" id="bar-ctrl">
+        <div class="control-item">
+          <label for="bar-count">Count</label>
+          <input type="range" id="bar-count" min="5" max="50" value="20">
+          <span id="bar-count-val">20</span>
+        </div>
+        <div class="control-item">
+          <label for="bar-width">Bar Width</label>
+          <input type="range" id="bar-width" min="20" max="120" value="60">
+          <span id="bar-width-val">60</span>
+        </div>
+        <div class="control-item">
+          <label for="bar-gap">Interval</label>
+          <input type="range" id="bar-gap" min="4" max="80" value="14">
+          <span id="bar-gap-val">14</span>
+        </div>
+        <div class="control-item">
+          <label for="bar-radius">Radius</label>
+          <input type="range" id="bar-radius" min="0" max="40" value="12">
+          <span id="bar-radius-val">12</span>
+        </div>
+        <div class="control-item">
+          <label for="bar-margin">Left Margin</label>
+          <input type="range" id="bar-margin" min="0" max="200" value="40">
+          <span id="bar-margin-val">40</span>
+        </div>
+        <div class="control-item">
+          <label for="bar-bg">Background</label>
+          <input type="color" id="bar-bg" value="#ECF5FF">
+          <span id="bar-bg-val">#ECF5FF</span>
+        </div>
+        <div class="control-item">
+          <label for="bar-color">Bar Color</label>
+          <input type="color" id="bar-color" value="#0C82FF">
+          <span id="bar-color-val">#0C82FF</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Right: Line Chart ========== -->
+    <section class="div-10 card" aria-labelledby="line-heading">
+      <header class="div-11">
+        <div class="div-12">
+          <h2 id="line-heading" class="text-wrapper-10">Line Chart</h2>
+        </div>
+      </header>
+
+      <canvas id="line-canvas" style="width:100%;height:60vh;border-radius:12px;background:#0f1117;"></canvas>
+
+      <div class="controls" id="line-ctrl">
+        <div class="control-item">
+          <label for="line-count">Count</label>
+          <input type="range" id="line-count" min="5" max="50" value="20">
+          <span id="line-count-val">20</span>
+        </div>
+        <div class="control-item">
+          <label for="line-width">Stroke</label>
+          <input type="range" id="line-width" min="1" max="10" value="3">
+          <span id="line-width-val">3</span>
+        </div>
+        <div class="control-item">
+          <label for="line-smooth">Smooth</label>
+          <input type="range" id="line-smooth" min="0" max="100" value="50">
+          <span id="line-smooth-val">50</span>
+        </div>
+        <div class="control-item">
+          <label for="line-margin">Side Margin</label>
+          <input type="range" id="line-margin" min="0" max="200" value="50">
+          <span id="line-margin-val">50</span>
+        </div>
+        <div class="control-item">
+          <label for="line-bg">Background</label>
+          <input type="color" id="line-bg" value="#0f1117">
+          <span id="line-bg-val">#0f1117</span>
+        </div>
+        <div class="control-item">
+          <label for="line-color">Line Color</label>
+          <input type="color" id="line-color" value="#3b82f6">
+          <span id="line-color-val">#3b82f6</span>
+        </div>
+      </div>
+    </section>
+  </div>
 </main>
+
+<script src="{% static '/js/chart.js'%}"></script>
 
 {% endblock %}
